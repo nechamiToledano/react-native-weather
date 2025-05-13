@@ -20,7 +20,17 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.ntoled.WeatherNow"
+      "package": "com.ntoled.WeatherNow",
+      
+        "permissions": [
+          "android.permission.INTERNET",
+          "android.permission.ACCESS_FINE_LOCATION",
+          "android.permission.ACCESS_COARSE_LOCATION"
+        ],
+        "config": {
+        "usesCleartextTraffic": true
+      }
+
     },
     "web": {
       "favicon": "./assets/favicon.png"
