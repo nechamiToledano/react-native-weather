@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, ActivityIndicator, StyleSheet, Image, TextInput, Pressable } from 'react-native';
 import { getWeather, getWeatherByCity } from '../api/weatherApi';
+import Animated, { SlideInUp } from 'react-native-reanimated';
 
 export default function WeatherScreen({ route }) {
   const { coords } = route.params || {};
@@ -53,8 +54,8 @@ export default function WeatherScreen({ route }) {
         <ActivityIndicator size="large" color="#0000ff" />
       ) : weather ? (
         
-        <View entering={SlideInUp.springify().damping(20)}
-        style={styles.weatherBox}>
+<Animated.View entering={SlideInUp.springify().damping(20)} style={styles.weatherBox}>
+
           <Text style={styles.cityName}>{weather.name}</Text>
           <Text style={styles.desc}>{weather.weather[0].description}</Text>
           <Text style={styles.temp}>{Math.round(weather.main.temp)}°C</Text>
@@ -62,7 +63,7 @@ export default function WeatherScreen({ route }) {
             source={{ uri: `http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png` }}
             style={{ width: 100, height: 100 }}
           />
-        </View>
+        </Animated.View>
       ) : (
         <Text style={{ marginTop: 20 }}>No weather data</Text>
       )}
